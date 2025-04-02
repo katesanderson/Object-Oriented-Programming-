@@ -133,3 +133,73 @@ class Animal(ABC):
     def eatFood(self):
         pass
 
+#abstracts also dont have a constructor
+
+
+
+#INIT is called a constructor
+
+#Each time we use the 'cookie cutter' each instance is called a state
+
+
+
+
+# 4. Abstraction -> what ABC means
+# @abstractmethod
+# example below of Character class inheriting from Entity ABC
+
+from abc import ABC, abstractmethod #Always needed for abstraction methods
+
+
+class Entity(ABC):
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
+    @abstractmethod
+    def interact(self):
+        pass
+
+    def get_info(self):
+        return f"{self.name}: {self.description}"
+
+#How Abstraction classes are used:
+
+class Character(Entity):
+    def __init__(self, name, description, health):
+        super().__init__(name, description)
+        self.health = health
+
+    def interact(self): #If I was to delete this would get an effort saying need abstract methods bc we are a child of it - but the abstract should always say pass and the children can decide the method
+        return f"{self.name} says: 'Greetings, traveler! How can I assist you?'"
+
+class Item(Entity):
+    def __init__(self, name, description, effect):
+        super().__init__(name, description)
+        self.effect = effect
+
+    def interact(self):
+        return f"You pick up the {self.name}. {self.effect}"
+
+
+#Abstract are always a parent!
+#Note: class Character(Entity, Bob) - both are parents!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
